@@ -1,19 +1,19 @@
 .logotypePosition {
     margin-left: 10%;
+    position: absolute;
 }
 .loginConteiner{
+    
     position: absolute;
-    margin-left: 12.5%;
+    margin-left: 39%;
     margin-top: 8%;
-}
-.loginImagePosition{
-    position: absolute;
-    margin-left: 35%; 
-    height: 500px;
-    width: 600px;
-    border-radius: 100px;
+    text-align: center;
+
 }
 .registerConteiner{
     position: absolute;
-    margin-left: 12.5%;
+    text-align: center;
+    margin-left: 36%;
+    margin-top: 4%;
+    
 }

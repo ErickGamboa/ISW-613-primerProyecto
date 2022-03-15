@@ -6,30 +6,48 @@
 <img class = "logotypePosition" src="Images/Logotype.png">
 <title>Login</title>
 </head>
+
+<?php
+  include('functions.php');
+?>
+
 <body>
     
-<form>
+<form method="POST" >
 <div class = "loginConteiner">  
   <div><h1>User Login</h1></div>
   <div class="mb-3">
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
+    <input name = "EmailLogin" type="email" class="form-control"   placeholder="Email address">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input  name = "PasswordLogin" type="password" class="form-control"  placeholder="Password">
   </div>    
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button name = "LoginButton" type="submit" class="btn btn-primary">Login</button>
   <br>
   <div>If you don´t have an account <a href="Register.php">Signup here</a></div>
 </form>
 </div>
 
-<div class = "loginImagePosition">  
-<img class = "loginImagePosition" src="Images/loginBackGroud.jpg">
 
+<?php
 
+if (isset($_POST["LoginButton"])) 
+{
+$ResultAuthenticate = authenticate(credentials(),"EmailLogin","PasswordLogin");
+if ($ResultAuthenticate == true ){
+  session_start();
+  $_SESSION['user'] = $ResultAuthenticate;
+  if($ResultAuthenticate[10]== "Administrator"){
+  header('Location: admin.php');
+  }else if ($ResultAuthenticate[10]== "Client"){
+  header('Location: client.php');
+  }
+}else {
+  echo '<script>alert("CREDENCIALES INVÁLIDOS")</script>';
+}}
 
-</div>
+  ?>
 
 
 
