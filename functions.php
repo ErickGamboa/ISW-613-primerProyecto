@@ -39,3 +39,20 @@ function authenticate($link, $username, $passw){
     } else {
         return $array;
     }}
+
+function saveCategorie ($link, $name){
+    $rName = $_POST["$name"];
+    $insertData = "INSERT INTO categories VALUES(NULL,'$rName')";
+    return $executeInsert = mysqli_query($link, $insertData );
+    
+}
+
+function showCategories ($link){
+    $query = "SELECT * FROM categories";
+    $excutingQuery = mysqli_query($link,$query);
+    $array = mysqli_fetch_array($excutingQuery);
+    for($i=0; $i<=$array; $i++);
+    echo  $array[1];
+    $array = mysqli_fetch_array($excutingQuery);
+    }
+    

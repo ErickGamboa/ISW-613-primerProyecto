@@ -25,7 +25,7 @@
   </div>    
   <button name = "LoginButton" type="submit" class="btn btn-primary">Login</button>
   <br>
-  <div>If you don´t have an account <a href="Register.php">Signup here</a></div>
+  <div>If you don´t have an account <a href="register.php">Signup here</a></div>
 </form>
 </div>
 
@@ -51,5 +51,5 @@ if ($ResultAuthenticate == true ){
 
 
 
-<body>
+</body>
 </html>

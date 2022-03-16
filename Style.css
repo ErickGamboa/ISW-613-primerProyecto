@@ -17,3 +17,22 @@
     margin-top: 4%;
     
 }
+.categorieAddConteiner{
+    position: absolute;
+    margin-left: 42%;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.logoutButtonPosition{
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 90%;
+}
+.tableCategoriesPosition{
+    position: absolute;
+    margin-left: 43%;
+    margin-top: 13%;
+    text-align: center;
+    border: rgb(38, 38, 236) 1px solid;
+}
