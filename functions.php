@@ -55,4 +55,5 @@ function showCategories ($link){
     echo  $array[1];
     $array = mysqli_fetch_array($excutingQuery);
     }
+
     

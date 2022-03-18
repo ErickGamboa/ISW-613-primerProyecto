@@ -39,7 +39,7 @@ if ($ResultAuthenticate == true ){
   session_start();
   $_SESSION['user'] = $ResultAuthenticate;
   if($ResultAuthenticate[10]== "Administrator"){
-  header('Location: admin.php');
+  header('Location: categoriesMain.php');
   }else if ($ResultAuthenticate[10]== "Client"){
   header('Location: client.php');
   }

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <img class = "logotypePosition" src="Images/Logotype.png">
-<title>Categories</title>
+<title>Category</title>
 </head>
 <?php
   include('functions.php');
@@ -12,9 +12,20 @@
 
 <body>
 
+<form method="POST">
+
 <div class = "logoutButtonPosition">
-<button name = "LoginButton" type="submit" class="btn btn-primary">Logout</button>
+<button name = "LogoutButton" type="submit" class="btn btn-primary">Logout</button>
 </div>
+
+
+<div class = "categorieAddConteiner">  
+<div><h3>Category</h3></div>
+<input name = "nameCategorie" type="text" class="form-control"   placeholder="Name">
+<br>
+<button name = "saveCategrieButton" type="submit" class="btn btn-primary">Save</button>
+</div>
+
 
 <div class = "tableCategoriesPosition">
 
@@ -34,12 +45,30 @@
     <?php
     $query = "SELECT * FROM categories";
     $excutingQuery = mysqli_query(credentials(),$query);
-    while ($array = mysqli_fetch_array($excutingQuery)){
+    while ($row = mysqli_fetch_array($excutingQuery)){
     ?>
     <tr>
-    <td><?php echo $array ["id"] ?></td>
-      <td><?php echo $array ["name"] ?></td>
-      <td>Edit / Delete</td>
+    <td><?php echo $row ["id"] ?></td>
+      <td><?php echo $row ["name"] ?></td>
+
+
+      <td>
+        
+
+      <a href="editCategory.php?id=<?php echo $row["id"]?>" class="btn btn-primary">Edit
+
+      </a>
+
+      <a href="deleteCategory.php?id=<?php echo $row["id"]?>" class="btn btn-primary">Delete
+
+      </a>
+
+      
+
+      
+    
+    </td>
+
     </tr>
     <?php
     }
@@ -48,13 +77,33 @@
   </table>
     </div>
 
-<div>
-  <button name = "LoginButton" type="submit" class="btn btn-primary">Add Category</button>
-  </div>
- 
+</form>
+
 
   
 
+
+
+  <?php
+
+    if (isset($_POST["saveCategrieButton"])) {
+
+      if(empty($_POST['nameCategorie'])) {
+
+        echo '<script>alert("DEBES COLOCARLE NOMBRE A LA CATEGORÍA")</script>';
+        }
+      else{
+
+        saveCategorie(credentials(),"nameCategorie");
+        header('Location: categoriesMain.php');
+        }
+      }
+
+      
+      
+    
+
+  ?>
 
 
 

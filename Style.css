@@ -19,7 +19,7 @@
 }
 .categorieAddConteiner{
     position: absolute;
-    margin-left: 42%;
+    margin-left: 64%;
     margin-top: 15%;
     text-align: center;
 }
@@ -31,8 +31,14 @@
 }
 .tableCategoriesPosition{
     position: absolute;
-    margin-left: 43%;
-    margin-top: 13%;
+    margin-left: 31%;
+    margin-top: 5%;
     text-align: center;
     border: rgb(38, 38, 236) 1px solid;
+}
+.categorieEditConteiner{
+    position: absolute;
+    margin-left: 43%;
+    margin-top: 15%;
+    text-align: center;
 }
