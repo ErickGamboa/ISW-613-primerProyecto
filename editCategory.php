@@ -19,15 +19,15 @@ if (isset($_GET["id"])){
     $result = mysqli_query(credentials(),$query);
     if (mysqli_num_rows($result)==1){
         $row = mysqli_fetch_array($result);
-        $name = $row["name"];
+        $name = $row["category"];
     }
     
     }
 
 if (isset($_POST["update"])){
-    $id = $_GET["id"];
-    $name = $_POST["nameCategorieEdit"];  
-    $query = "UPDATE categories SET name = $name WHERE id=$id";
+    $id = $_GET["id"]; 
+    $name = $_POST["nameCategorieEdit"]; 
+    $query = "UPDATE categories SET category = \"$name\" WHERE id=$id";
     $result = mysqli_query(credentials(),$query);
     header('Location: categoriesMain.php');
 }

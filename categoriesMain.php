@@ -8,6 +8,14 @@
 </head>
 <?php
   include('functions.php');
+
+  session_start();
+
+  $user = $_SESSION['user'];
+  if (!$user) {
+    header('Location: login.php');
+  }
+
 ?>
 
 <body>
@@ -49,7 +57,7 @@
     ?>
     <tr>
     <td><?php echo $row ["id"] ?></td>
-      <td><?php echo $row ["name"] ?></td>
+      <td><?php echo $row ["category"] ?></td>
 
 
       <td>
@@ -99,6 +107,11 @@
         }
       }
 
+    if (isset($_POST["LogoutButton"])) {
+        session_start();
+        session_destroy();
+        header('Location: login.php');
+      }
       
       
     
