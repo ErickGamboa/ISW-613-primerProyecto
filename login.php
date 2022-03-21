@@ -41,7 +41,7 @@ if ($ResultAuthenticate == true ){
   if($ResultAuthenticate[10]== "Administrator"){
   header('Location: categoriesMain.php');
   }else if ($ResultAuthenticate[10]== "Client"){
-  header('Location: client.php');
+  header('Location: newSources.php');
   }
 }else {
   echo '<script>alert("CREDENCIALES INVÁLIDOS")</script>';

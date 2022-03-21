@@ -55,5 +55,13 @@ function showCategories ($link){
     echo  $array[1];
     $array = mysqli_fetch_array($excutingQuery);
     }
+function saveNewSource ($link, $name, $url, $category){
+    $sName = $_POST["$name"];
+    $sUrl = $_POST["$url"];
+    $sCategory = $_POST["$category"];
+    $insertData = "INSERT INTO newssources VALUES(NULL,'$sName','$sUrl','$sCategory')";
+    return $executeInsert = mysqli_query($link, $insertData );
+    
+}
 
     
