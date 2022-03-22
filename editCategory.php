@@ -36,7 +36,7 @@ if (isset($_POST["update"])){
 
 <form action = "editCategory.php?id=<?php echo $_GET["id"];?>" method="POST">
 <div class = "categorieEditConteiner">  
-<div><h3>News Sources</h3></div>
+<div><h3>Category</h3></div>
 <input name = "nameCategorieEdit" type="text" class="form-control"   placeholder="Name" value = <?php echo $name; ?>>
 <br>
 <button name = "update" type="submit" class="btn btn-primary">Update</button>
