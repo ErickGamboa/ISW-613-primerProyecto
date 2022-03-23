@@ -9,12 +9,12 @@
 <?php
   include('functions.php');
 
-  #session_start();
+  session_start();
 
- # $user = $_SESSION['user'];
-  #if (!$user) {
-   # header('Location: login.php');
-  #}
+  $user = $_SESSION['user'];
+  if (!$user) {
+  header('Location: login.php');
+  }
 
 ?>
 
@@ -25,10 +25,13 @@
 <div class = "logoutButtonPosition">
 <button name = "LogoutButton" type="submit" class="btn btn-primary">Logout</button>
 </div>
+<div class = "nSourcestButtonPosition">
+<button name = "nSorucestButtonPosition" type="submit" class="btn btn-primary">News Sources</button>
+</div>
 
 <div class="dashboarButtonsPosition">
 <div class="btn-group">
-  <button type="submit" class="btn btn-default">Portada</button>
+  <button name = "portadaButton" type="submit" class="btn btn-primary">Portada</button>
 
 
 
@@ -37,7 +40,9 @@
     $excutingQuery = mysqli_query(credentials(),$query);
     while ($row = mysqli_fetch_array($excutingQuery)){
     ?>
-    <button type="submit" class="btn btn-default"><?php echo $row ["categorySource"] ?></button>
+    <a href="dashboardNews.php?categorySource=<?php echo $row["categorySource"]?>" class="btn btn-primary"><?php echo $row["categorySource"]?>
+
+</a>
 
     <?php
     }
@@ -53,9 +58,33 @@
 
 <div class="content">
 
- <?php
+<?php
 
- $url = "https://feeds.feedburner.com/DeportesCrhoycomPeriodicoDigitalCostaRicaNoticias";
+$url = "https://feeds.feedburner.com/crhoy/wSjk" ;
+
+if (isset($_POST["nSorucestButtonPosition"])){
+  header('Location:newSources.php');
+}
+
+
+if (isset($_POST["LogoutButton"])){
+  session_start();
+  session_destroy();
+  header('Location:login.php');
+}
+
+if (isset($_GET["categorySource"])){
+  $categorySource = $_GET["categorySource"];
+  $query = "SELECT * FROM newssources WHERE categorySource= \"$categorySource\"";
+  $excutingQuery = mysqli_query(credentials(),$query);
+  while ($row = mysqli_fetch_array($excutingQuery)){
+  $url =  $row ["url"];
+  }
+  }
+if(isset($_POST['portadaButton'])){
+  $url = "https://feeds.feedburner.com/crhoy/wSjk" ;
+}
+
  if(isset($_POST['submit'])){
    if($_POST['feedurl'] != ''){
      $url = $_POST['feedurl'];
@@ -87,19 +116,20 @@
    $pubDate = date('D, d M Y',strtotime($postDate));
 
 
-   if($i>=5) break;
-  ?>
+   if($i>=5) break;?>
+   
    <div class="post">
      <div class="post-head">
-       <h2><a class="feed_title" href="<?php echo $link; ?>"><?php echo $title; ?></a></h2>
-       <span><?php echo $pubDate; ?></span>
+       <h2><a class="feed_title" href="<?php echo $link;?>"><?php echo $title;?></a></h2>
+       <span><?php echo $pubDate;?></span>
      </div>
      <div class="post-content">
-       <?php echo implode(' ', array_slice(explode(' ', $description), 0, 20)) . "..."; ?> <a href="<?php echo $link; ?>">Read more</a>
+       <?php echo implode(' ', array_slice(explode(' ', $description), 0, 20)) . "...";?><a href="<?php echo $link;?>">Read more</a>
      </div>
    </div>
+   
 
-   <?php
+<?php
     $i++;
    }
  }else{
@@ -108,27 +138,9 @@
    }
  }
  ?>
+
+
 </div>
-
-
-
-
-
-
-<?php
-
-    
-    if (isset($_POST["LogoutButton"])) {
-        session_start();
-        session_destroy();
-        header('Location: login.php');
-      }
-      
-      
-    
-
-  ?>
-
 
 </body>
 </html>

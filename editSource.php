@@ -13,6 +13,14 @@
 
 include('functions.php');
 
+session_start();
+
+  $user = $_SESSION['user'];
+  if (!$user) {
+  header('Location: login.php');
+  }
+
+/** Carga los datos de la tabla con el id enviado */
 if (isset($_GET["id"])){
     $id = $_GET["id"];
     $query = "SELECT * FROM newssources WHERE id=$id";
@@ -24,7 +32,7 @@ if (isset($_GET["id"])){
     }
     
     }
-
+/** actualiza los datos de la tabla del id enviado */
 if (isset($_POST["save"])){
     $id = $_GET["id"]; 
     $name = $_POST["nameNewsSource"]; 
@@ -46,6 +54,7 @@ if (isset($_POST["save"])){
 <option value= <?php echo $category?>> <?php echo $category?> </option>
 
 <?php
+
 $query = "SELECT * FROM categories";
 $excutingQuery = mysqli_query(credentials(),$query);
 while ($row = mysqli_fetch_array($excutingQuery)){

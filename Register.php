@@ -31,11 +31,12 @@
     <input name = "address"  class="form-control"   placeholder="Address">
 
     
-
+    /**  */
 <div class="mb-3">
 <select name = "country" class="form-select" aria-label="Default select example">
 <option value="" disabled selected hidden>Country</option>
 <?php
+/** API que consume los paises del mundo */
 $response = json_decode(file_get_contents("https://countriesnow.space/api/v0.1/countries/states"));
 for($i =0; $i<count($response->data); $i++){
     $pais = $response->data[$i]->name;
@@ -80,7 +81,7 @@ for($i =0; $i<count($response->data); $i++){
 
 
 <?php
-
+/** Validación para que no se guarden datos vacios */
 if (isset($_POST["registerButton"])) 
 {
     if(empty($_POST['name']) ||  empty($_POST['lastName'])  ||  empty($_POST['email'])  ||  empty($_POST['password'])  || 

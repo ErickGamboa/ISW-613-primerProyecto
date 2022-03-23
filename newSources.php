@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<img class = "logotypePosition" src="Images/Logotype.png">
+<a href="dashboardNews.php"><img class = "logotypePosition" src="Images/Logotype.png"/></a>
 <title>News Sources</title>
 </head>
 <?php
@@ -38,6 +38,7 @@
 <option value="" disabled selected hidden>Category</option>
 
 <?php
+/** Se muestran las catgeorias guardadas en la base de datos */
 $query = "SELECT * FROM categories";
 $excutingQuery = mysqli_query(credentials(),$query);
 while ($row = mysqli_fetch_array($excutingQuery)){
@@ -69,6 +70,7 @@ $category = $row ["category"];
     <tbody>
 
     <?php
+    /** carga datos de la base de datos en una tabla */
     $query = "SELECT * FROM newssources";
     $excutingQuery = mysqli_query(credentials(),$query);
     while ($row = mysqli_fetch_array($excutingQuery)){

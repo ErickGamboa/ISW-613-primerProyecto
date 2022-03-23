@@ -13,6 +13,14 @@
 
 include('functions.php');
 
+session_start();
+
+  $user = $_SESSION['user'];
+  if (!$user) {
+  header('Location: login.php');
+  }
+
+
 if (isset($_GET["id"])){
     $id = $_GET["id"];
     $query = "SELECT * FROM categories WHERE id=$id";
